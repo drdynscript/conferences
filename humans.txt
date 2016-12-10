@@ -1,0 +1,29 @@
+/* TEAM */
+Company: Artevelde University College Ghent
+Website (English): https://www.arteveldehogeschool.be/en
+Website (Dutch): http://www.arteveldehogeschool.be
+Twitter: @ArteveldeHS
+Email: info [at] arteveldehs [dot] be
+Location: Hoogpoort 15, 9000 Ghent (Belgium)
+
+Department: Bachelor of Graphical and Digital Media
+Website (English): https://www.arteveldehogeschool.be/en/bachelor-graphical-and-digital-media
+Website (Dutch): https://www.arteveldehogeschool.be/bachelor-de-grafische-en-digitale-media
+Twitter: @ArteveldeGDM
+Email: info [dot] grafische [dot] digitalemedia [at] arteveldehs [dot] be
+Location: Industrieweg 232, 9030 Mariakerke (Belgium)
+
+Data+Design+HTML+CSS+PHP+MySQL+jQuery: Philippe De Pauw - Waterschoot
+Website: http://www.drdynscript.org
+Twitter: @drdynscript
+Location: Ghent, Belgium
+
+/* THANKS */
+HTML5 Template: Jekyll
+Website: http://html5boilerplate.com/
+
+/* SITE */
+Last update: Always up-to-date
+Standards: HTML5, CSS3
+Components: Modernizr, jQuery, Google Maps
+Software: PHP, MySQL, Sublime Text, Notepad++

@@ -1,0 +1,35 @@
+{
+  "name": "conferences",
+  "version": "1.0.0",
+  "description": "Conferences slides, code, ...",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drdynscript/conferences.git"
+  },
+  "keywords": [
+    "conference",
+    "slide",
+    "reveal",
+    "jekyll",
+    "gdm",
+    "graphic",
+    "digital",
+    "media"
+  ],
+  "author": "Philippe De Pauw - Waterschoot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drdynscript/conferences/issues"
+  },
+  "homepage": "https://github.com/drdynscript/conferences#readme",
+  "devDependencies": {
+    "fontawesome": "^4.7.0",
+    "handlebars": "^4.0.6",
+    "lodash": "^4.17.2",
+    "oauth-js": "^0.9.9"
+  }
+}

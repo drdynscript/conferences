@@ -1,0 +1,41 @@
+# Site settings
+# -------------
+baseurl     : /conferences
+colour      : primary
+language    : nl
+host        : 127.0.0.1
+port        : 4000
+
+# SEO
+# ---
+domain      : Artevelde University College Ghent
+subdomain   : Bachelor of Graphical and Digital Media
+description : Style Guide for Syllabi.
+author      : Bachelor of Graphical and Digital Media | Artevelde University College Ghent
+copyright   : Copyright 2010-16 Artevelde University College Ghent. All Rights Reserved.
+
+# Build settings
+# --------------
+gems:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-mentions
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jemoji
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+sass:
+  style: compressed
+exclude:
+  - gulpfile
+  - node_modules/
+  - src/
+  - Gemfile
+  - LICENSE
+  - package.json
+  - README.md

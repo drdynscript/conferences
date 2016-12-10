@@ -1,0 +1,20 @@
+---
+layout: shared/compress
+---
+
+{% include twitterwall/head.html %}
+<body>
+  <div class="reveal">
+      <div class="slides">
+          {{ content }}
+      </div>
+  </div>
+  <!-- Handlebars Templates -->
+  <script id="template-tweet" type="text/x-handlebars-template">
+      <section data-id="{{ id }}">
+        {{ this.text }}
+      </section>
+  </script>
+  {% include twitterwall/foot.scripts.html %}
+</body>
+</html>
