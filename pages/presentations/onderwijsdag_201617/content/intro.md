@@ -1,9 +1,9 @@
-Cursussen en syllabi co-creëren met professionele IT-tools 
-==========================================================
+Onderwijsdag
+============
 
 <small>
-Bachelor in de **grafische en digitale media**
-----------------------------------------------
-### [Arteveldehogeschool](http://www.arteveldehogeschool.be)
-#### Onderwijsdag
+Cursussen en syllabi co-creëren met professionele IT-tools 
+----------------------------------------------------------
+### Bachelor in de **grafische en digitale media**
+#### [Arteveldehogeschool](http://www.arteveldehogeschool.be)
 </small>
