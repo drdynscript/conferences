@@ -1,0 +1,25 @@
+/// Helpers
+
+.ahs- {
+  &oranje {
+    color: map_get($color-ahs, oranje);
+  }
+  &groen {
+    color: map_get($color-ahs, groen);
+  }
+  &fuchsia {
+    color: map_get($color-ahs, fuchsia);
+  }
+  &blauw {
+    color: map_get($color-ahs, blauw);
+  }
+  &lichtgrijs {
+    color: map_get($color-ahs, lichtgrijs);
+  }
+  &middengrijs {
+    color: map_get($color-ahs, middengrijs);
+  }
+  &donkergrijs {
+    color: map_get($color-ahs, donkergrijs);
+  }
+}

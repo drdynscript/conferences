@@ -1,0 +1,10 @@
+/// reveal.js Slide
+
+.reveal {
+  iframe,
+  img,
+  video {
+    max-height: 95%;
+    max-width: 95%;
+  }
+}

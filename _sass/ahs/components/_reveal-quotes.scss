@@ -1,0 +1,27 @@
+/// reveal.js Quotes
+
+.reveal {
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote {
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2); 
+    display: block;
+    font-style: italic;
+    position: relative;
+    margin: 20px auto;
+    padding: 5px;
+    width: 70%;
+    p {
+      &:first-child,
+      &:last-child {
+        display: inline-block;
+      }
+    }
+  }
+  q {
+    font-style: italic;
+  }
+}

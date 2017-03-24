@@ -1,0 +1,40 @@
+/// reveal.js Tables
+
+.reveal {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: auto;
+    td,
+    th {
+      border-bottom: 1px solid map-get($map: $color-ahs, $key: lichtgrijs);
+      padding: .2em .5em;
+      text-align: left;
+      &[align="center"] {
+        text-align: center;
+      }
+      &[align="right"] {
+        text-align: right;
+      }
+    }
+    th {
+      font-weight: bold;
+    }
+    thead {
+      th {
+        border-bottom: 1px solid #000;
+      }
+    }
+    tbody {
+      tr:last-child {
+        td,
+        th {
+          border-bottom: none;
+        }
+      }
+    }
+    small {
+      color: map-get($map: $color-ahs, $key: middengrijs);
+    }
+  }
+}

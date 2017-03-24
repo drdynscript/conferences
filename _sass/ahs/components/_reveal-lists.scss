@@ -1,0 +1,40 @@
+/// reveal.js Lists
+
+.reveal {
+  dd {
+    margin-left: 40px;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dl,
+  ol,
+  ul {
+    display: inline-block;
+    margin: 0 0 0 1em;
+    text-align: left;
+    small {
+      opacity: .5;
+    }
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+     list-style-type: square;
+    // ul {
+    //   list-style-type: ;
+    //   ul {
+    //     list-style-type: circle;
+    //   }
+    // }
+  }
+  ol,
+  ul {
+    ol,
+    ul {
+      display: block;
+      margin-left: 40px
+    }
+  }
+}

@@ -1,0 +1,37 @@
+/// Sass Variables
+/// http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variables_
+
+// Colours
+$color-palette: (
+  color-A: hsl(359,  0%, 50%),
+  color-B: hsl(  0, 70%, 50%),
+  color-C: hsl( 25, 70%, 50%),
+  color-D: hsl( 50, 70%, 50%),
+  color-E: hsl(150, 70%, 50%),
+  color-F: hsl(200, 70%, 50%),
+  color-G: hsl(229, 30%, 50%),
+  color-H: hsl(330, 50%, 50%)
+);
+
+$color-selection: #FF0;
+
+// Artevelde Colours
+$color-ahs: (
+  oranje     : #E90,
+  groen      : #BC0,
+  fuchsia    : #C07,
+  puchsia    : #C07,
+  blauw      : #0AC,
+  lichtgrijs : #DDD,
+  middengrijs: #AAA,
+  donkergrijs: #777,
+  zwart      : #000
+);
+
+$bg-color: rgba(11, 11, 11, 1);
+$f-color: rgba(244, 244, 244, 1);
+
+// Fonts
+$font-code: "Source Code Pro", monospace;
+$font-sans-serif: "Source Sans Pro", sans-serif;
+$font-serif: serif;

@@ -1,0 +1,47 @@
+/// reveal.js Navigation Controls
+
+.reveal {
+   $color-disabled: #000;
+   $color-enabled: #000;
+   $color-hover: map-get($map: $color-ahs, $key: groen);
+  .controls {
+    .navigate- {
+      &down {
+        border-top-color: $color-disabled;
+        &.enabled {
+          border-top-color: $color-enabled;
+          &:hover {
+            border-top-color: $color-hover;
+          }
+        }
+      }
+      &left {
+        border-right-color: $color-disabled;
+        &.enabled {
+          border-right-color: $color-enabled;
+          &:hover {
+            border-right-color: $color-hover;
+          }
+        }
+      }
+      &right {
+        border-left-color: $color-disabled;
+          &.enabled {
+          border-left-color: $color-enabled;
+          &:hover {
+            border-left-color: $color-hover;
+          }
+        }
+      }
+      &up {
+        border-bottom-color: $color-disabled;
+        &.enabled {
+          border-bottom-color: $color-enabled;
+          &:hover {
+            border-bottom-color: $color-hover;
+          }
+        }
+      }
+    }
+  }
+}

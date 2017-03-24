@@ -17,3 +17,6 @@ page_styles: ['/css/ahs.css']
 <section class="slides__chapter">
     <section data-markdown="{{ page_back_str }}/{{ page_path_folder | append: 'content/intro.md' }}" class="slides__homepage"></section>
 </section>
+<section class="slides__chapter">
+    <section data-markdown="{{ page_back_str }}/{{ page_path_folder | append: 'content/problems__1.md' }}" class="slides__homepage"></section>
+</section>

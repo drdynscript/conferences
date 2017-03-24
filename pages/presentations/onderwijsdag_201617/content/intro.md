@@ -1,4 +1,9 @@
-HELLO OLIVIER
-=====
+Cursussen en syllabi co-creëren met professionele IT-tools 
+==========================================================
 
-Ik hou van presentaties
+<small>
+Bachelor in de **grafische en digitale media**
+----------------------------------------------
+### [Arteveldehogeschool](http://www.arteveldehogeschool.be)
+#### Onderwijsdag
+</small>

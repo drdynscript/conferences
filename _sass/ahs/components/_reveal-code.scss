@@ -1,0 +1,26 @@
+/// reveal.js Code
+
+.reveal {
+  code {
+    font-family: $reveal-font-code;
+  }
+  pre {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .3);
+    display: block;
+    font-family: $reveal-font-code;
+    font-size: .55em;
+    line-height: 1.2em;
+    margin: 20px auto;
+    position: relative;
+    text-align: left;
+    width: 90%;
+    word-wrap: break-word;
+    code {
+      display: block;
+      max-height: 400px;
+      padding: 5px;
+      overflow: auto;
+      word-wrap: normal;
+    }
+  }
+}

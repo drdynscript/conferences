@@ -1,0 +1,22 @@
+/// reveal.js Links
+
+.reveal {
+  $color: map-get($map: $color-ahs, $key: blauw);
+  a {
+    color: $color;
+    line-height: 1.3em;
+    text-decoration: none;
+    -webkit-transition: color .15s ease;
+    -moz-transition: color .15s ease;
+    transition: color .15s ease;
+    &:hover {
+      border: none;
+      color: darken($color: $color, $amount: 20%);
+      text-shadow: none;
+    }
+  }
+  .roll span:after {
+    background: #25211c;
+    color: #fff;
+  }
+}

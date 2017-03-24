@@ -1,0 +1,163 @@
+/// reveal.js Theme
+
+body {
+  background: $bg-color;
+  background-color: $bg-color;
+  font-family: $reveal-font-body;
+  font-size: 30px;
+  font-weight: normal;
+  color: $f-color;
+}
+
+.slides {
+  &__homepage {
+    > h1 {
+      font-size: 6rem;
+    }
+  }
+
+  &__chapter {
+    &--profile {
+      section {
+        h2 {
+          color: map-get($color-ahs, 'oranje');
+        }
+        ul small {
+          opacity: 0.76;
+          font-size: 1.4rem;
+        }
+      }
+      strong {
+        color: map-get($color-ahs, 'oranje');
+      }
+      .slides__chapter-intro {
+        h2 {
+          color: $bg-color;
+        }
+      }
+    }
+    &--jobs {
+      section {
+        h2 {
+          color: map-get($color-ahs, 'blauw');
+        }
+        ul small {
+          opacity: 0.76;
+          font-size: 1.4rem;
+        }
+      }
+      strong {
+        color: map-get($color-ahs, 'blauw');
+      }
+      .slides__chapter-intro {
+        h2 {
+          color: $bg-color;
+        }
+      }
+    }
+    &--inhoud {
+      section {
+        h2 {
+          color: map-get($color-ahs, 'puchsia');
+        }
+        ul small {
+          opacity: 0.76;
+          font-size: 1.4rem;
+        }
+        a {
+          color: map-get($color-ahs, 'puchsia');
+        }
+      }
+      strong {
+        color: map-get($color-ahs, 'puchsia');
+      }
+      .slides__chapter-intro {
+        h2 {
+          color: $bg-color;
+        }
+        strong {
+          color: #f4f4f4;
+        }
+      }
+    }
+    &--programma {
+      section {
+        h2 {
+          color: map-get($color-ahs, 'groen');
+        }
+        ul small {
+          opacity: 0.76;
+          font-size: 1.4rem;
+        }
+        a {
+          color: map-get($color-ahs, 'groen');
+        }
+      }
+      strong {
+        color: map-get($color-ahs, 'groen');
+      }
+      .slides__chapter-intro {
+        h2 {
+          color: $bg-color;
+        }
+        strong {
+          color: #f4f4f4;
+        }
+      }
+    }
+    &-intro {
+      > h2 {
+        color: $bg-color;
+        font-size: 8rem;
+      }
+    }
+  }
+}
+
+*[data-markdown] table tr td {
+  position: relative;
+  padding-right: 80px;
+}
+
+*[data-domain] {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+
+*[data-domain] .fa {
+  font-size: 1.2rem;
+}
+
+*[data-domain="wanm"] .fa {
+  color: #C07;
+}
+
+*[data-domain="av3"] .fa {
+  color: #0AC;
+}
+
+.reveal {
+  .controls {
+    .navigate-up {
+      &.enabled {
+        border-bottom-color: rgba(255, 255, 255, 1);
+      }
+    }
+    .navigate-right {
+      &.enabled {
+        border-left-color: rgba(255, 255, 255, 1);
+      }
+    }
+    .navigate-down {
+      &.enabled {
+        border-top-color: rgba(255, 255, 255, 1);
+      }
+    }
+    .navigate-left {
+      &.enabled {
+        border-right-color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
