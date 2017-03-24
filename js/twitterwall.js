@@ -1,6 +1,6 @@
 function ready(cb) {
     /in/.test(document.readyState)
-    ? setTimeout(ready.bind(null, cb), 90)
+    ? setTimeout(ready.bind(null, cb), 150)
     : cb();
 };
 
@@ -8,128 +8,153 @@ ready(function(){
 
   var App = {
     "init": function() {
-      this.OAUTH_PUBLLIC_KEY = '_B2kGq6jsDyq7w7vnhkIcKfegME'; // OAuth key
-      this.TWITTER_API_SEARCH = 'https://api.twitter.com/1.1/search/tweets.json?q='; // Twitter Search API endpoint
+      this._twitterService = TwitterService; // Clone TwitterService object
+      this._twitterService.init(); // Initialize the TwitterService
 
-      this._revealTransitions = [
-        'none',
-        'concave',
-        'convex',
-        'fade',
-        'slide',
-      ];
-
-      this.initReveal();
-
-      this._twitterAPI = null; // TwitterAPI
-      this._twitterAPISearchString = 'angular';
+      this._revealService = RevealService; // Clone RevealService object
+      this._revealService.init(); // Initialize the RevealService
 
       this._hbsCache = {}; // Handlebars cache for templates
 			this._hbsPartialsCache = {}; // Handlebars cache for partials
 
-      //this.connectToTwitterAPI(); // Connect to Twitter API
-      var tweets = [
-        {
-          "id": 807486811786375200,
-          "created_at": "Sat Dec 10 07:27:12 +0000 2016",
-          "retweet_count": 2,
-          "retweeted": false,
-          "text" : "RT @AngularJS_News: #HT Angular 1.6 Released, see our blog post here https://t.co/QAw2DmXpB0 via @angularjs #HT https://t.co/oYrzhIxsHd",
-          "user": {
-            "id": 4277617239,
-            "screen_name": "JavascriptBot_",
-            "profile_image_url": "http://pbs.twimg.com/profile_images/669615961847255040/wBd7Caaw_normal.jpg",
-            "utc_offset": -28800,
-            "time_zone": "Pacific Time (US & Canada)",
-            "followers_count": 14654,
-            "created_at": "Wed Nov 25 19:45:03 +0000 2015",
-            "description": "I retweet all about Javascript !!",
-            "statuses_count": 78835
-          }
-          
+      this._appInitialized = false; // App initialized
+      this._twitterSearchTitle = null;
+      this._twitterAPISearchString = null;
+      this._isTwitterSearchAutomated = false;
+      this._automateTwitterSearchSpeed = 92000;
+      this._tweets = [];
+
+      var that = this;
+      // Connect to Twitter via TwitterService, then Reveal.js initialisation
+      this._twitterService.connect().then(
+        function(tws_result) {
+          console.log(tws_result);
+          that._revealService.initReveal().then(
+            function(rjs_result) {
+              console.log(rjs_result);
+              that._appInitialized = true;
+              that.addEventListeners();
+            },
+            function(rjs_error) {
+              console.log(rjs_error);
+              that._appInitialized = false;
+            }
+          );
+        },
+        function(tws_error) {
+          console.log(tws_error);
         }
-      ];
-      this.updateTwitterSearchUI(tweets);
+      );
     },
-    "initReveal": function() {
-          Reveal.initialize({
-          controls: true,
-          progress: true,
-          history: true,
-          center: true,
-          transition: this._revealTransitions[2],
+    "addEventListeners": function() {
+      var frmTwitterSearch = document.querySelector('#frmTwitterSearch');
+      if(frmTwitterSearch != null && frmTwitterSearch != undefined) {
 
-          // Optional reveal.js plugins
-          dependencies: [
-              { src: '../vendor/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-              { src: '../vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-              { src: '../vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-              { src: '../vendor/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-              { src: '../vendor/reveal.js/plugin/zoom-js/zoom.js', async: true },
-              { src: '../vendor/reveal.js/plugin/notes/notes.js', async: true }
-          ]
-      }); 
-    },
-    "connectToTwitterAPI": function() {
-      var that = this; // Hack
+        var that = this;
 
-      OAuth.initialize(this.OAUTH_PUBLLIC_KEY); // Initialize OAuth.io
-      OAuth.popup('twitter')
-        .done(function(result) {
-            that._twitterAPI = result;
-            that.getTweetsFromAPIBySearch(that._twitterAPISearchString);
-        })
-        .fail(function (err) {
-            //handle error with err
-            console.log(err)
+        frmTwitterSearch.addEventListener('submit', function(ev) {
+          ev.preventDefault();
+
+          that._twitterSearchTitle = Utils.trim(this.querySelector('[name="txtTitle"]').value);
+          that._twitterAPISearchString = Utils.trim(this.querySelector('[name="txtHashtag"]').value).replace('#','');
+          that.getTweetsBySearch();
+
+          return false;
         });
-    },
-    "getTweetsFromAPIBySearch": function(search) {
-      if(this._twitterAPI != null && this._twitterAPI != undefined) {
-        var that = this; // Hack
-
-        var url = this.TWITTER_API_SEARCH + search;
-        this._twitterAPI.get(url)
-          .done(function(result) {
-            that.updateTwitterSearchUI(result.statuses);
-          })
-          .fail(function (err) {
-              //handle error with err
-              console.log(err)
-          });
       }
     },
-    "updateTwitterSearchUI": function(tweets) {
-      var tweetsFiltered = tweets;
-      for(var i=0;i<tweetsFiltered.length;i++) {
-        var tweet = tweetsFiltered[i];
-        console.log(tweet);
-        var tweetHTML = '';
-        tweetHTML += '<section data-id="' + tweet.id + '" data-background-image="' + tweet.user.profile_image_url.replace('_normal', '') + '">';
-        tweetHTML += '<div class="tweet">';
-        tweetHTML += '<div class="tweet__left">';
-        tweetHTML += '<picture class="tweet__picture"><img src="' + tweet.user.profile_image_url + '">' + '</picture>'
-        tweetHTML += '<div class="tweet__meta">';
-        tweetHTML += '</div>'
-        tweetHTML += '</div>';
-        tweetHTML += '<div class="tweet__right">';
-        tweetHTML += '<div class="tweet__user">' + tweet.user.screen_name + '</div>';
-        tweetHTML += '<div class="tweet__text">' + this.processTweetLinks(tweet.text) + '</div>';
-        tweetHTML += '</div>';
-        tweetHTML += '</div>';
-        tweetHTML += '</section>';
+    "getTweetsBySearch": function() {
+      var that = this;
+
+      this._twitterService.getTweetsBySearch(this._twitterAPISearchString).then(
+        function(rjs_result) {
+          //console.log(rjs_result);
+          that.updateUITweets(rjs_result);
+        },
+        function(rjs_error) {
+          console.log(rjs_error);
+        }
+      );
+    },
+    "startAutomation": function() {
+      if(this._isTwitterSearchAutomated == false) {
+        this._isTwitterSearchAutomated = true;
+        this.automateTwitterSearch();
+      }
+    },
+    "stopAutomation": function() {
+      this._isTwitterSearchAutomated = false;
+    },
+    "automateTwitterSearch": function() {
+      var that = this;
+      window.setTimeout(function() {
+        if(that._isTwitterSearchAutomated == true) {
+          that.getTweetsBySearch();
+          that.automateTwitterSearch();
+        }
+      }, this._automateTwitterSearchSpeed);
+    },
+    "updateUITweets": function(tweetsFromAPI) {
+
+      var that = this;
+      	
+      var tweetFromAPI = null, tweets = [], tweet = null;
+      for(var i=0;i<tweetsFromAPI.length;i++) {
+        tweetFromAPI = tweetsFromAPI[i];
+        tweet = {
+          "id": tweetFromAPI.id,
+          "created_at": tweetFromAPI.created_at,
+          "retweet_count": tweetFromAPI.retweet_count,
+          "retweeted": tweetFromAPI.retweeted,
+          "text" : tweetFromAPI.text,
+          "user": {
+            "id": tweetFromAPI.user.id,
+            "screen_name": tweetFromAPI.user.screen_name,
+            "profile_image_url": tweetFromAPI.user.profile_image_url.replace('_normal', ''),
+            "utc_offset": tweetFromAPI.user.utc_offset,
+            "time_zone": tweetFromAPI.user.time_zone,
+            "followers_count": tweetFromAPI.user.followers_count,
+            "created_at": tweetFromAPI.user.created_at,
+            "description": tweetFromAPI.user.description,
+            "statuses_count": tweetFromAPI.user.statuses_count
+          }
+        }
+        // Check if tweet is present in previous tweets list. If not present then add it to the new tweets list
+        var originalTweets = this._tweets;
+        var originalIndex = _.findIndex(originalTweets, function(originalTweet) { return originalTweet.id == tweet.id; })
+
+        if(originalIndex == -1) {
+          tweets.push(tweet);
+        }
+      }
+      // Concat new tweets to the original tweets list
+      this._tweets = _.concat(this._tweets, tweets);
+
+      // Handlebars Template engine for each tweet
+      if(!this._hbsCache['tweet-template']) {
+				var src = document.querySelector('#tweet-template').innerHTML;
+				this._hbsCache['tweet-template'] = Handlebars.compile(src);
+			}
+      var tweetHTML = null;
+      for(var i=0;i<tweets.length;i++) {
+        tweet = tweets[i];
+        tweetHTML = this._hbsCache['tweet-template'](tweet);
         document.querySelector('.tweets-list').innerHTML += tweetHTML;
       }
-      this.initReveal(); 
-    },
-    "processTweetLinks": function(text) {
-        var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
-        text = text.replace(exp, "<a href='$1' target='_blank'>$1</a>");
-        exp = /(^|\s)#(\w+)/g;
-        text = text.replace(exp, "$1<a href='https://twitter.com/hashtag/$2?src=hash' target='_blank'>#$2</a>");
-        exp = /(^|\s)@(\w+)/g;
-        text = text.replace(exp, "$1<a href='http://www.twitter.com/$2' target='_blank'>@$2</a>");
-        return text;
+      
+      this._revealService.updateReveal().then(
+        function(rjs_result) {
+          console.log(rjs_result);
+          (document.querySelector('[name="txtTitle"]').value = that._twitterSearchTitle);
+          (document.querySelector('[name="txtHashtag"]').value = that._twitterAPISearchString);
+          that.addEventListeners();
+          that._revealService.startAutomation();
+          that.startAutomation();
+        },
+        function(rjs_error) {
+          console.log(rjs_error);
+        }
+      );
     }
   };
   App.init();

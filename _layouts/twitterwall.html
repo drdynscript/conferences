@@ -1,20 +1,23 @@
 ---
-layout: shared/compress
+# Jekyll layout: revealjs
+# v1.0
+# © 2016–2017 drdynscript
+# MIT License
+layout: shared/base
+libs_styles: ['/vendor/reveal.js/css/reveal.css']
+libs_scripts: ['/vendor/reveal.js/lib/js/head.min.js', '/vendor/reveal.js/js/reveal.js', '/vendor/oauth-js/oauth.min.js', '/vendor/handlebars/handlebars.js', '/vendor/lodash/lodash.js']
+base_styles: ['/css/twitterwall.css']
+base_scripts: ['/js/utilities.js', '/js/helpers.js', '/js/twitterwall.services.js', '/js/twitterwall.js']
 ---
 
-{% include twitterwall/head.html %}
-<body>
-  <div class="reveal">
-      <div class="slides">
-          {{ content }}
-      </div>
-  </div>
-  <!-- Handlebars Templates -->
-  <script id="template-tweet" type="text/x-handlebars-template">
-      <section data-id="{{ id }}">
-        {{ this.text }}
-      </section>
-  </script>
-  {% include twitterwall/foot.scripts.html %}
-</body>
-</html>
+<div class="reveal">
+    <div class="slides">
+        {{ content }}
+    </div>
+</div>
+<!-- Handlebars Templates -->
+<script id="template-tweet" type="text/x-handlebars-template">
+    <section data-id="{{ id }}">
+    {{ this.text }}
+    </section>
+</script>

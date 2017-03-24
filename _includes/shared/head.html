@@ -1,31 +1,43 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie7" lang="nl" dir="ltr"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie8" lang="nl" dir="ltr"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="nl" dir="ltr"><![endif]-->
-<!--[if IE 9]><html class="no-js lt-ie10" lang="nl" dir="ltr"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="nl" dir="ltr"><!--
-<![endif]-->
+{% capture page_title %}Syllabus Theme{% endcapture %} {% capture page_subdomain %}Bachelor in de Grafische en Digitale Media{% endcapture %} {% capture page_domain %}Arteveldehogeschool{% endcapture %} {% capture page_description %}Theme voor Syllabi
+Arteveldehogeschool{% endcapture %} {% capture page_keywords %}AHS, GDM, Jekyll, Theme, SASS{% endcapture %} {% capture page_author %}Bachelor in de Grafische en Digitale Media{% endcapture %} {% capture page_copyright %}Arteveldehogeschool{% endcapture
+%} {% if page.title %} {% capture page_title %}{{ page.title | strip_html }}{% endcapture %} {% endif %} {% if site.subdomain %} {% capture page_subdomain %}{{ site.subdomain | strip_html }}{% endcapture %} {% endif %} {% if site.domain %} {% capture
+page_domain %}{{ site.domain | strip_html }}{% endcapture %} {% endif %} {% if page.description %} {% capture page_description %}{{ page.description | strip_html }}{% endcapture %} {% endif %} {% if page.keyword %} {% capture page_keyword %}{{ page.keyword
+| strip_html }}{% endcapture %} {% endif %} {% if site.author %} {% capture page_author %}{{ site.author | strip_html }}{% endcapture %} {% endif %} {% if site.copyright %} {% capture page_copyright %}{{ site.copyright | strip_html }}{% endcapture %}
+{% endif %}
+
 <head>
-  <!-- CHARACTER ENCODING -->
-  <meta charset="UTF-8">
-  <!-- LATEST VERSION OF RENDERING ENGINE -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <!-- MOBILE VIEWPORT -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- MOST IMPORTANT SEO TAG -->
-  <title>{{ page.title | strip_html }} | {{ site.subdomain | strip_html  }} | {{ site.domain | strip_html  }}</title>
-  <!-- OTHER SEO FRIENDLY TAGS -->   
-  <meta name="description" content="Drdynscript wil graag met jullie zijn app en kennis delen omtrent HTML5, CSS3 en JavaScript.">
-  <meta name="keywords" content="HTML5, JavaScript, jQuery, CSS3">
-  <meta name="author" content="{{ site.author }}">
-  <meta name="copyright" content="{{ site.copyright }}">
-  <!-- HUMANS.TXT -->
-  <link rel="author" type="text/plain" href="{{ '/humans.txt' | prepend: site.baseurl }}">
-  <!-- FONTAWESOME -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- WEBFONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-  <!-- STYLES -->
-  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
-  <!-- MODERNIZR --> 
-  <script src="{{ '/vendor/modernizr/modernizr.js' | prepend: site.baseurl }}"></script>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+    <!-- Latest version of rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- Mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Most important SEO tag -->
+    <title>{{ page_title }} | {{ page_subdomain }} | {{ page_domain }}</title>
+    <!-- Other SEO friendly tags -->
+    <meta name="description" content="{{ page_description }}">
+    <meta name="keywords" content="{{ page_keywords }}">
+    <meta name="author" content="{{ page_author }}">
+    <meta name="copyright" content="{{ page_copyright }}">
+    <!-- humans.txt -->
+    <link rel="author" type="text/plain" href="{{ '/humans.txt' | prepend: site.baseurl }}">
+    <!-- DNS prefech for CDN -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//code.jquery.com">
+    <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com">
+    <!-- Icons -->
+    {% include shared/head.icons.html %}
+    <!-- Libraries Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+    {% if layout.libs_styles and layout.libs_styles != empty %} {% for style_href in layout.libs_styles %}
+    <link rel="stylesheet" href="{{ style_href | prepend: site.baseurl }}"> {% endfor %} {% endif %}
+    <!-- Template Styles -->
+    {% if layout.base_styles and layout.base_styles != empty %} {% for style_href in layout.base_styles %}
+    <link rel="stylesheet" href="{{ style_href | prepend: site.baseurl }}"> {% endfor %} {% endif %}
+    <!-- Page Styles -->
+    {% if page.page_styles and page.page_styles != empty %} {% for style_href in page.page_styles %}
+    <link rel="stylesheet" href="{{ style_href | prepend: site.baseurl }}"> {% endfor %} {% endif %}
+    <!-- Modernizr -->
+      <script src="{{ '/vendor/modernizr/modernizr.js' | prepend: site.baseurl }}"></script>
+</head>
